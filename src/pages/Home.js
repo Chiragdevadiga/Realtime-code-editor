@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Home = () => {
+    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
     const navigate = useNavigate();
 
     const [roomId, setRoomId] = useState('');
@@ -78,7 +80,8 @@ const Home = () => {
             <footer>
                 <h4>
                     Built with 💛 &nbsp; by &nbsp;
-                    <a href="">Team 6</a>
+                   
+                    <a href="https://github.com/Chiragdevadiga">Alden Ankith Chirag</a>
                 </h4>
             </footer>
         </div>
