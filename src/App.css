@@ -1,18 +1,119 @@
+
 .homePageWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #ffffff;
     height: 100vh;
 }
+.user {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: aqua;
+    animation: jumpAndScaleAnimation 0.5s ease-in-out; /* Adjust timing as needed */
+    /* You can adjust other styling properties here */
+}
+
+@keyframes jumpAndScaleAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2); /* Adjust the jump height and scale */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes jumpAndFallAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2); /* Adjust the jump height and scale */
+    }
+    100% {
+        transform: translateY(300px) scale(0.8); /* Adjust the falling distance and scale */
+    }
+}
+
+
+@keyframes jumpAndScaleAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2); /* Adjust the jump height and scale */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes jumpAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px); /* Adjust the jump height */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes rotateAndColorChange {
+    0% {
+        transform: rotateY(0deg);
+        color: #333; /* Start color */
+    }
+    50% {
+        transform: rotateY(180deg);
+        color: #ff5733; /* Mid color */
+    }
+    100% {
+        transform: rotateY(360deg);
+        color: #4caf50; /* End color */
+    }
+}
+
+
+@keyframes rotateUsername {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+
 
 .formWrapper {
-    background: #282a36;
+    background: rgb(92, 111, 120);
     padding: 20px;
     border-radius: 10px;
     width: 400px;
     max-width: 90%;
+    border: 2px solid white; /* Initial border color is white */
+    animation: changeBorderColor 5s infinite alternate; /* Change border color animation */
 }
+
+@keyframes changeBorderColor {
+    0% {
+        border-color: white; /* Start with white border color */
+    }
+    50% {
+        border-color: red; /* Change to red at 50% of animation */
+    }
+    100% {
+        border-color: blue; /* Change to blue at end of animation */
+    }}
 
 footer {
     position: fixed;
@@ -66,8 +167,7 @@ footer a {
     margin-left: auto;
 }
 
-.joinBtn:hover,
-.leaveBtn:hover {
+.joinBtn:hover {
     background: #2b824c;
 }
 
@@ -92,6 +192,8 @@ footer a:hover {
 .mainWrap {
     display: grid;
     grid-template-columns: 230px 1fr;
+    overflow: hidden;
+ 
 }
 
 .aside {
@@ -130,47 +232,106 @@ footer a:hover {
 .logoImage {
     height: 60px;
 }
-
+.runBtn{
+    width: 100%;
+    margin-top: 20px;
+    background-color:rgb(103, 174, 63)
+}
+.logoutBtn {
+    width: 100%;
+    margin-top: 20px;
+    background-color: aqua;
+}
 .leaveBtn {
     width: 100%;
     margin-top: 20px;
+    background-color: red;
 }
 .CodeMirror {
     min-height: calc(100vh - 20px);
-    font-size: 20px;
+    font-size: 14px;
     line-height: 1.6;
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 
 .gridContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100vh; /* adjust as needed */
+    grid-template-columns: 2px 798px 2px 505px;
+    /*two columns of width 900px and 400px respectively
+     /* adjust as needed */
+}
+.start-border{
+    grid-column: 1;
+    animation: colorChange 10s infinite alternate; 
+    
+    
+
 }
 
 .editorWrap {
-    max-width: 100%; /* Set the fixed width of editorWrap to 50% of its container */
-    grid-column: 1; /* Ensure it occupies the first column */
-}
-
-
-.outputWrap {
+    /* max-width: 700px; */
+     /* Set the fixed width of editorWrap to 50% of its container */
     grid-column: 2;
+     /* Ensure it occupies the first column */
+     max-height: (100vh-20px);
+}
+.lineWrap {
+    grid-column: 3;
+    /* Optional: Can keep this for light text on the separator */
+    animation: colorChange 10s infinite alternate; /* Adjust animation properties */
+  }
+  
+  @keyframes colorChange {
+    0% { background-color: #FF5733; }  /* Red */
+    25% { background-color: #33FF57; } /* Green */
+    50% { background-color: #3366FF; } /* Blue */
+    75% { background-color: #FFFF33; } /* Yellow */
+    100% { background-color: #FF5733; } /* Back to red (can be removed for a continuous loop) */
+  }
+  
+
+
+.outputWrap {
+    grid-column: 4;
 }
 
 .outputWrap {
-    background-color: #f5f5f5;
     padding: 10px;
 }
 
 .outputWrap a {
-    color: #007bff;
+    color: white;
     text-decoration: none;
 }
-/* Override the font size of the selected text in CodeMirror */
-/* .CodeMirror-line::selection,
-.CodeMirror-line>span::selection,
-.CodeMirror-line>span>span::selection {
-    font-size: 10px; /* Set the desired font size for selected text */
+.terminal{
+    color: #eee;
+    border-bottom: 2px solid #ddd;
+    padding: 5px;
+    min-width: 100%;
+    box-sizing: border-box;
+   margin-bottom: 10px;
+   margin-top: 5px;
+   
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white; /* Set the container to full viewport height */
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+  
+
 

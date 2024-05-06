@@ -1,15 +1,34 @@
 // src/pages/LoginPage.js
 import React from 'react';
+import './Login.css'; // Import CSS file for additional styling
 
 const LoginPage = ({ onLogin }) => {
     return (
-        <div style={{ textAlign: 'center', padding: '20px',color:'cyan' }}>
-            <h1>Login for real-time collaboration</h1>
-            <button onClick={onLogin} style={{ padding: '10px 20px' ,background: '#4aed88',
-    width: '200px',
-    marginLeft: 'auto' }}>
-                Login with Redirect
-            </button>
+        <div className="login-container">
+            <div className="login-content">
+                <h1 className="login-title">Login for Real-time Collaboration</h1>
+                <p className="login-description">
+                    Welcome to our real-time collaboration platform. Sign in to start collaborating with others in real-time!
+                </p>
+                <button className="login-button" onClick={onLogin}>
+                    Login with Redirect
+                </button>
+            </div>
+            <div className="code-editor-info">
+                <h2 className="code-editor-title">Real-time Code Editor</h2>
+                <p className="code-editor-description">
+                    Our platform offers a powerful real-time code editor where you can collaborate with your team members seamlessly. 
+                    With live updates and collaborative features, coding together has never been easier.
+                </p>
+                <p className="code-editor-features">
+                    Key Features:
+                </p>
+                <ul className="code-editor-feature-list">
+                    <li>Instant updates</li>
+                    <li>Multi-user collaboration</li>
+                    <li>Syntax highlighting</li>
+                </ul>
+            </div>
         </div>
     );
 };

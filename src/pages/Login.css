@@ -1,0 +1,81 @@
+/* src/pages/LoginPage.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* White background */
+}
+
+.login-content {
+    width: 50%;
+    padding: 50px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.login-button {
+    padding: 12px 24px;
+    background-color: #4aed88;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #3ac775;
+}
+
+.signup-link {
+    color: #4aed88;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.code-editor-info {
+    width: 50%;
+    padding: 50px;
+    text-align: left;
+}
+
+.code-editor-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.code-editor-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.code-editor-features {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.code-editor-feature-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.code-editor-feature-list li {
+    margin-bottom: 5px;
+}

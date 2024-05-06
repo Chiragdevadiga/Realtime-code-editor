@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import toast from 'react-hot-toast';
 import ACTIONS from '../Actions';
 import Client from '../components/Client';
@@ -13,6 +14,7 @@ import {
 } from 'react-router-dom';
 
 const EditorPage = () => {
+    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
     const [language, setLanguage] = useState('javascript');
     const [output, setOutput] = useState('');
 
@@ -23,6 +25,8 @@ const EditorPage = () => {
     const { roomId } = useParams();
     const reactNavigator = useNavigate();
     const [clients, setClients] = useState([]);
+    const [isError, setIsError] = useState(false);
+
 
 
     const runCode = async () => {
@@ -33,11 +37,14 @@ const EditorPage = () => {
                 const { stdout, stderr } = response.data.run;
                 setOutput(stdout ? stdout : stderr);
                 console.log('Output:', stdout ? stdout : stderr);
+                stderr ? setIsError(true) : setIsError(false);
+
             } else {
                 console.error('Unexpected API response:', response);
             }
         } catch (error) {
             console.error('Error running code:', error);
+            
         }
     };
 
@@ -120,7 +127,7 @@ const EditorPage = () => {
                     <div className="logo">
                         <img
                             className="logoImage"
-                            src="/code-sync.png"
+                            src="/code-nitte.png"
                             alt="logo"
                         />
                     </div>
@@ -151,29 +158,52 @@ const EditorPage = () => {
                     <option value="typescript">TypeScript</option>
                     <option value="python">Python</option>
                     <option value="csharp">C#</option>
+                    <option value="php">Php</option>
+                    <option value="java">Java</option>
                 </select>
-                <button className="btn leaveBtn" onClick={runCode}>
+                
+                <button className="btn runBtn" onClick={runCode}>
                     RUN
                 </button>
+                <button className="btn logoutBtn" onClick={() => logout({ returnTo: window.location.origin })}>
+    Log Out
+</button>
+
                 <button className="btn leaveBtn" onClick={leaveRoom}>
                     Leave
                 </button>
             </div>
             <div className="gridContainer">
+            <div className="start-border"> </div>
                 <div className="editorWrap">
                     <Editor
                         socketRef={socketRef}
                         roomId={roomId}
+                        
                         onCodeChange={(code) => {
                             codeRef.current = code;
                         }}
                     />
                 </div>
-                <div className="outputWrap" style={{ backgroundColor: '#000', padding: '10px' }}>
-                    <a  style={{ color: '#4aee88', textDecoration: 'none' }}>
-                    {output || 'No output'}
-                    </a>
-                </div>
+                <div className="lineWrap"></div>
+                <div className="outputWrap" style={{ backgroundColor: '#000', padding: '10px', overflowX: 'auto' ,display:'flex',flexDirection:'column', flexWrap:'wrap'}}>
+                <div className="terminal">Console 
+
+</div>
+  <pre style={{
+   color: output ? (isError ? "red" : "hsl(0, 0%, 90%)") : "gray",
+
+    fontSize: '16px',
+    fontFamily: 'Arial, sans-serif',
+    overflowWrap: 'break-word',
+  }}>
+    {output || 'Click "Run Code" to see the output here'}
+  </pre>
+</div>
+
+
+
+
             </div>
         </div>
     );

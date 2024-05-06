@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,14 @@ const Home = () => {
 
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
+
+    // Update username state when user changes
+    useEffect(() => {
+        if (user) {
+            setUsername(user.name);
+        }
+    }, [user]);
+
     const createNewRoom = (e) => {
         e.preventDefault();
         const id = uuidV4();
@@ -36,14 +44,17 @@ const Home = () => {
             joinRoom();
         }
     };
+
     return (
         <div className="homePageWrapper">
             <div className="formWrapper">
                 <img
                     className="homePageLogo"
-                    src="/code-sync.png"
-                    alt="code-sync-logo"
+                    src="/code-nitte.png"
+                    alt="code-nitte-logo"
                 />
+                {/* Display "Hello, username" if user is authenticated */}
+                {isAuthenticated && <h3 class="user">Hello, {user.name}</h3>}
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
                 <div className="inputGroup">
                     <input
@@ -80,8 +91,7 @@ const Home = () => {
             <footer>
                 <h4>
                     Built with 💛 &nbsp; by &nbsp;
-                   
-                    <a href="https://github.com/Chiragdevadiga">Alden Ankith Chirag</a>
+                    <a href="">Team 6</a>
                 </h4>
             </footer>
         </div>
