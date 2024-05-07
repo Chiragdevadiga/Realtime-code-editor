@@ -11,7 +11,7 @@ const Home = () => {
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
 
-    // Update username state when user changes
+ 
     useEffect(() => {
         if (user) {
             setUsername(user.name);
@@ -53,7 +53,7 @@ const Home = () => {
                     src="/code-nitte.png"
                     alt="code-nitte-logo"
                 />
-                {/* Display "Hello, username" if user is authenticated */}
+                
                 {isAuthenticated && <h3 class="user">Hello, {user.name}</h3>}
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
                 <div className="inputGroup">
@@ -91,7 +91,7 @@ const Home = () => {
             <footer>
                 <h4>
                     Built with 💛 &nbsp; by &nbsp;
-                    <a href="">Team 6</a>
+                    <a href="https://github.com/Chiragdevadiga">Team 6</a>
                 </h4>
             </footer>
         </div>
