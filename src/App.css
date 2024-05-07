@@ -257,9 +257,7 @@ footer a:hover {
 
 .gridContainer {
     display: grid;
-    grid-template-columns: 2px 798px 2px 505px;
-    /*two columns of width 900px and 400px respectively
-     /* adjust as needed */
+    grid-template-columns: 2px 3.995fr 2px 2.525fr; 
 }
 .start-border{
     grid-column: 1;
