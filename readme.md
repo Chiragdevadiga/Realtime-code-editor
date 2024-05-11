@@ -26,7 +26,7 @@ To get started with this project, you'll need to clone the repository and set up
    ```bash
    npm install
    
-4. Start the development server:
+4. Create an optimized build and start the server:
    ```bash
    npm start
 
